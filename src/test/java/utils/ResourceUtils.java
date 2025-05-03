@@ -1,22 +1,16 @@
 package utils;
 
-import io.restassured.RestAssured;
+
 import io.restassured.path.json.JsonPath;
-import org.junit.jupiter.api.BeforeAll;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
-public class TestBase {
 
-    @BeforeAll
-    public static void setUp() {
-        RestAssured.baseURI = "https://reqres.in";
-        RestAssured.basePath = "/api";
-    }
+public class ResourceUtils {
 
-    public String generateStringFromResource(String classpathPath) {
+    public String getStringFromResource(String classpathPath) {
         try (InputStream inputStream = getClass().getResourceAsStream(classpathPath)) {
             if (inputStream == null) {
                 throw new RuntimeException("File not found in classpath: " + classpathPath);
