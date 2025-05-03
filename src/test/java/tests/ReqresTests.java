@@ -37,8 +37,9 @@ public class ReqresTests {
                 .isNotBlank();
     }
 
-    @ParameterizedTest(name = "Check unsuccessful sign in without: {0}")
+    @ParameterizedTest(name = "without: {0}")
     @ValueSource(strings = {"email", "password"})
+    @DisplayName("Check unsuccessful sign in")
     void unsuccessfulRegisterTest(String field) {
         String body = utils.getStringFromResource("/reqresData/bodyForRegister.json")
                 .replace(field, "/" + field);
